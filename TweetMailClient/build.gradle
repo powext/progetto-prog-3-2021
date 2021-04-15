@@ -1,3 +1,5 @@
+import org.gradle.api.file.DuplicatesStrategy
+
 plugins {
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.9'
@@ -10,7 +12,7 @@ repositories {
     mavenCentral()
 }
 
-mainClassName = 'it.tweetmail.server.Main'
+mainClassName = 'it.tweetmail.client.Main'
 
 dependencies {
     implementation fileTree(dir: '../TweetMailLib/build/libs', include: ['*.jar'])
@@ -19,15 +21,19 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
+test {
+    useJUnitPlatform()
+}
+
 javafx {
     version = "15.0.1"
-    modules = ['javafx.base', 'javafx.controls', 'javafx.fxml']
+    modules = ['javafx.base', 'javafx.controls', 'javafx.fxml', 'javafx.web']
 }
 
 jar {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE // was 'INCLUDE'
     manifest {
-        attributes ('Main-Class': mainClassName, 'Class-Path': 'lib/TweetMailLib-1.0.0.jar')
+        attributes ('Main-Class': mainClassName, 'Class-Path': '../TweetMailLib/build/libs/TweetMailLib-1.0.0.jar')
     }
     from {
         configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
