@@ -59,7 +59,7 @@ public class Main {
         @Override
         public void start(Stage stage) throws IOException {
             stage.getIcons().add(new Image(getClass().getResourceAsStream("icon.png")));
-            stage.setTitle("UniTo Prog3 - Mail Client [" + model.configManager().read("user.email") + "]");
+            stage.setTitle("TweetMail - Mail Client [" + model.configManager().read("user.email") + "]");
 
             model.clientMail().bindServerStatus(model.observablesManager().getObject(Observables.SERVER_STATUS));
             startCheckThread();

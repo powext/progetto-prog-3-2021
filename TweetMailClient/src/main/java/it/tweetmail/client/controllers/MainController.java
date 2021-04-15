@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.time.Instant;
@@ -45,6 +46,9 @@ public final class MainController extends BaseController {
     @FXML
     private Circle serverStatusCircle;
 
+    @FXML
+    private Text folderTitle;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Check for config.properties "user.email" value
@@ -60,6 +64,9 @@ public final class MainController extends BaseController {
             outboxFolderBtn.setDisable(newValue == MailFolder.OUTBOX);
             trashFolderBtn.setDisable(newValue == MailFolder.TRASH);
             loadEmailList(newValue);
+
+            String mFolderTitle = newValue.toString();
+            folderTitle.setText(mFolderTitle.substring(0,1).toUpperCase() + mFolderTitle.substring(1).toLowerCase());
         });
 
         // Init emails tableview
@@ -70,7 +77,7 @@ public final class MainController extends BaseController {
                 super.updateItem(item, empty);
                 if (empty) return;
 
-                // Row style (Email readed or not)
+                // Row style (Email read or not)
                 setStyle(item.hasBeenRead() ? "" : "-fx-font-weight: bold");
 
                 // Row tooltip

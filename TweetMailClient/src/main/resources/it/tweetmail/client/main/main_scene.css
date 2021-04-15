@@ -1,16 +1,81 @@
 .body {
-    -fx-background-color: white;
+    -fx-background-color: #FFF;
+    -fx-font-family: "Source Sans Pro";
 }
 
 .footer {
-    -fx-background-color: lightgray;
+    -fx-background-color: #FFF;
 }
 
 .emails-table {
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
+    -fx-border-style: none;
+    -fx-box-border: transparent;
 }
+
+.emails-table:focused {
+    -fx-border-style: none;
+    -fx-box-border: transparent;
+}
+
+.emails-table .column-header-background {
+    -fx-background-color: #FFF;
+}
+
+
+.emails-table .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+
+.emails-table .column-header {
+    -fx-background-color: transparent;
+}
+
+.emails-table .table-cell{
+    -fx-border-color: transparent;
+}
+
+
+.emails-table .table-row-cell:odd{
+    -fx-background-color: transparent;
+}
+
+.emails-table .table-row-cell:even{
+    -fx-background-color: transparent;
+}
+
+.emails-table .table-row-cell:selected{
+    -fx-background-radius: 5;
+    -fx-background-color: #2a62ff;
+    -fx-text-fill: #FFF;
+}
+
+.emails-table .table-row-cell:hover{
+    -fx-background-radius: 5;
+    -fx-background-color: #dedede;
+}
+
 
 .logo-text {
     -fx-font: 24 arial;
+}
+
+.button:disabled {
+    -fx-background-color: #2a62ff;
+    -fx-text-fill: #fff;
+    -fx-opacity: 1;
+}
+
+.button:pressed {
+    -fx-background-color: #2a62ff;
+}
+
+.button:hover {
+    -fx-background-color: #dedede;
+}
+
+.button {
+    -fx-font-family: "Source Sans Pro SemiBold";
+    -fx-background-color: #fff;
 }

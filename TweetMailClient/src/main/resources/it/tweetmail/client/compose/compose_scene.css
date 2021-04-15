@@ -1,7 +1,39 @@
 .body {
     -fx-background-color: white;
+    -fx-font-family: "Source Sans Pro";
 }
 
 .footer {
-    -fx-background-color: lightgray;
+    -fx-background-color: white;
+}
+
+.text-field {
+    -fx-border-radius: 5;
+    -fx-focus-color: -fx-control-inner-background;
+    -fx-faint-focus-color: -fx-control-inner-background;
+}
+
+.text-field:focused {
+    -fx-border-color: #2a62ff;
+    -fx-border-radius: 5;
+    -fx-focus-color: transparent;
+}
+
+.button:disabled {
+    -fx-background-color: #2a62ff;
+    -fx-text-fill: #fff;
+    -fx-opacity: 1;
+}
+
+.button:pressed {
+    -fx-background-color: #2a62ff;
+}
+
+.button:hover {
+    -fx-background-color: #dedede;
+}
+
+.button {
+    -fx-font-family: "Source Sans Pro SemiBold";
+    -fx-background-color: #fff;
 }

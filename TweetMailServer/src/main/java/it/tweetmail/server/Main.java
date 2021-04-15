@@ -51,7 +51,7 @@ public class Main {
             Scene master = new Scene(root);
 
             stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("icon.png"))));
-            stage.setTitle("UniTo Prog3 - Mail Server");
+            stage.setTitle("TweetMail - Mail Server");
             stage.setResizable(false);
             stage.setScene(master);
             stage.show();
