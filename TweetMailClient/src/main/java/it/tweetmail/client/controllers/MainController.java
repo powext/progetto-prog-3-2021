@@ -89,9 +89,6 @@ public final class MainController extends BaseController {
                 rowToolTip.setStyle("-fx-font-weight: normal");
                 setTooltip(rowToolTip);
 
-                // Row context menu
-                setContextMenu(newContextMenu(item));
-
                 // Row double click
                 setOnMouseClicked(event -> {
                     if (event.getButton() != MouseButton.PRIMARY) return;
@@ -140,57 +137,6 @@ public final class MainController extends BaseController {
     public void composeAction(ActionEvent actionEvent) {
         sceneSwitcher().switchTo(AppScene.COMPOSE);
         setStatusLabel(BaseController.waitingForInput);
-    }
-
-    private ContextMenu newContextMenu(Email item) {
-        ContextMenu cm = new ContextMenu();
-        cm.setStyle("-fx-font-weight: normal");
-
-        // MenuItem Forward
-        MenuItem miForward = new MenuItem("Forward");
-        miForward.setOnAction(event -> loadEmailToCompose(item.getUUID(), 0));
-
-        // MenuItem Reply
-        MenuItem miReply = new MenuItem("Reply");
-        miReply.setOnAction(event -> loadEmailToCompose(item.getUUID(), 1));
-
-        // MenuItem Reply All
-        MenuItem miReplyTo = new MenuItem("Reply All");
-        miReplyTo.setOnAction(event -> loadEmailToCompose(item.getUUID(), 2));
-
-        // MenuItem Delete
-        MenuItem miDelete = new MenuItem("Delete");
-        miDelete.setOnAction(event ->
-                clientMail().sendCmd(Command.DELETE_EMAIL, (response, args) -> {
-                    if (response != ServerResponse.OK) {
-                        setStatusLabel(response.toString());
-                        return;
-                    }
-
-                    observablesManager().removeListEntry(Observables.EMAIL_LIST, item);
-                    setStatusLabel("Email deleted.");
-                }, getCurrentFolder().name(), item.getUUID()));
-
-        // MenuItem Restore
-        MenuItem miRestore = new MenuItem("Restore");
-        miRestore.setOnAction(event ->
-                clientMail().sendCmd(Command.RESTORE_EMAIL, (response, args) -> {
-                    if (response != ServerResponse.OK) {
-                        setStatusLabel(response.toString());
-                        return;
-                    }
-
-                    observablesManager().removeListEntry(Observables.EMAIL_LIST, item);
-                    setStatusLabel("Email deleted.");
-                }, item.getUUID()));
-
-        // Choose which items add to ContextMenu
-        cm.getItems().addAll(miForward, miReply, miReplyTo, miDelete);
-        if (getCurrentFolder() == MailFolder.TRASH) {
-            cm.getItems().add(miRestore);
-        }
-
-        return cm;
     }
 
     private void loadEmailToCompose(String emailUUID, int mode) {

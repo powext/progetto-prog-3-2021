@@ -23,8 +23,8 @@ it/tweetmail/server/utils/PlatformUtil.java
  it.tweetmail.server.utils.PlatformUtil
 it/tweetmail/server/modules/config/ConfigManager.java
  it.tweetmail.server.modules.config.ConfigManager
-it/tweetmail/server/controllers/ConsoleController.java
- it.tweetmail.server.controllers.ConsoleController
+it/tweetmail/server/server/session/commands/mailbox/SendMailCmd.java
+ it.tweetmail.server.server.session.commands.mailbox.SendMailCmd
 it/tweetmail/server/modules/database/DatabaseManagerImpl.java
  it.tweetmail.server.modules.database.DatabaseManagerImpl
 it/tweetmail/server/modules/synchronize/SynchronizeManager.java
@@ -64,12 +64,12 @@ it/tweetmail/server/Main.java
  it.tweetmail.server.Main$AppFx
 it/tweetmail/server/server/session/commands/mailbox/DeleteMailCmd.java
  it.tweetmail.server.server.session.commands.mailbox.DeleteMailCmd
+it/tweetmail/server/server/session/commands/mailbox/RestoreMailCmd.java
+ it.tweetmail.server.server.session.commands.mailbox.RestoreMailCmd
+it/tweetmail/server/server/session/commands/mailbox/CheckMailsCmd.java
+ it.tweetmail.server.server.session.commands.mailbox.CheckMailsCmd
 it/tweetmail/server/controllers/components/ConsoleListView.java
  it.tweetmail.server.controllers.components.ConsoleListView
  it.tweetmail.server.controllers.components.ConsoleListView$1
-it/tweetmail/server/server/session/commands/mailbox/CheckMailsCmd.java
- it.tweetmail.server.server.session.commands.mailbox.CheckMailsCmd
-it/tweetmail/server/server/session/commands/mailbox/SendMailCmd.java
- it.tweetmail.server.server.session.commands.mailbox.SendMailCmd
-it/tweetmail/server/server/session/commands/mailbox/RestoreMailCmd.java
- it.tweetmail.server.server.session.commands.mailbox.RestoreMailCmd
+it/tweetmail/server/controllers/ConsoleController.java
+ it.tweetmail.server.controllers.ConsoleController

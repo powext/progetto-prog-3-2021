@@ -8,36 +8,6 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.Base64;
 
-/**
- * MIT License
- * <p>
- * Copyright (c) 2020 Giuseppe Eletto
- * <p>
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * <p>
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- * <p>
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- * <p>
- * ------------------------------------------------------------------------------
- * <p>
- * This utility class allows you to read and write a serializable class using the Java.NIO library.
- * In particular using "FileChannel" and "FileLock" (Exclusive for writing, Shared for reading).
- * <p>
- * Based on StackOverflow answer : https://stackoverflow.com/a/22931238/8277574
- */
 public final class Serializer {
     public static boolean writeToFile(File file, Serializable serializable) {
         return writeToFile(file.toPath(), serializable);
@@ -72,7 +42,7 @@ public final class Serializer {
     public static <T extends Serializable> T readFromFile(Path path) {
         Object objectClass = null;
         try (FileChannel readChannel = FileChannel.open(path, StandardOpenOption.READ);
-             FileLock ignored = readChannel.lock(0L, Long.MAX_VALUE, true)) {
+            FileLock ignored = readChannel.lock(0L, Long.MAX_VALUE, true)) {
 
             byte[] bytes = new byte[5120]; // chunk of 5KB
             try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {

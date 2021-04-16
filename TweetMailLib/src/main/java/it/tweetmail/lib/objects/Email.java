@@ -10,7 +10,6 @@ import java.util.Objects;
 public final class Email implements Serializable, Cloneable {
     private static final long serialVersionUID = 4418908782121392803L;
 
-    /** An identical "uuid" does not ensure that the "body" is also the same, use "equals()" method to be sure */
     private final String uuid;
     private final String sender;
     private final List<String> recipients;

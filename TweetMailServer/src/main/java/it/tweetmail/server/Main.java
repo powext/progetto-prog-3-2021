@@ -36,6 +36,7 @@ public class Main {
 
     public static void printLn(String s) {
         model.observablesManager().addListEntry("console_log", s);
+        System.out.println(s);
     }
 
     public final static class AppFx extends Application {
